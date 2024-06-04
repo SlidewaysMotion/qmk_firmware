@@ -13,8 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
+#define CAPS_LOCK_ENABLE true
+#define CAPS_LOCK_COLOR RGB_RED
+#define CAPS_LED_GROUP LED_FLAG_INDICATOR // change what leds to target, for example LED_FLAG_KEYLIGHT for alpas or LED_FLAG_MODIFIER for modifiers
+
 #include "quantum.h"
-#include "../wilba_tech/wt_rgb_backlight_keycodes.h"
-#include "via.h"

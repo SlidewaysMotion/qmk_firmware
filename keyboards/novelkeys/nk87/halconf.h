@@ -21,10 +21,11 @@
 
 #pragma once
 
+#define HAL_USE_I2C TRUE
+
+
 #define HAL_USE_PWM FALSE
-
 #define HAL_USE_SPI FALSE
-
 #define PAL_USE_CALLBACKS FALSE
 
 #define PAL_USE_WAIT FALSE
