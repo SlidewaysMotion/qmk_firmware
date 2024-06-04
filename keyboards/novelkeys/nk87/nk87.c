@@ -13,16 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef RGB_BACKLIGHT_NK87
-#error RGB_BACKLIGHT_NK87 not defined, recheck config.h
-#endif
 
-#include "nk87.h"
 #include "drivers/led/issi/is31fl3733.h"
 
-#if defined(RGB_MATRIX_ENABLE) || defined(RGB_BACKLIGHT_NK87)
-const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
-/* Refer to IS31 manual for these locations
+
+
+is31_led PROGMEM g_is31_leds[DRIVER_LED_TOTAL] = {
+    /* Refer to IS31 manual for these locations
  *   driver
  *   |  R location
  *   |  |      G location
@@ -158,13 +155,29 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
     {1, SW8_CS16,  SW7_CS16,  SW9_CS16}, //LB63
     {1, SW11_CS16,  SW10_CS16,  SW12_CS16}, //LB64
 };
-#endif
+
+
+// Define center of RGB Matrix physical locations
+//#define RGB_MATRIX_CENTER { 112, 32 }
+
+
+
+
+// Physical locations of LEDs on the {224, 68} matrix grid measured from an image
+//    { 10, 9 }, { 25, 9 }, { 36, 9 }, { 48, 9 }, { 59, 9 }, { 74, 9 }, { 85, 9 }, { 97, 9 }, { 109, 8 }, { 123, 8 }, { 135, 9 }, { 147, 9 }, { 158, 9 }, { 173, 9 }, { 188, 9 }, { 199, 9 }, { 211, 9 }, { 10, 20 }, { 22, 20 }, { 33, 19 }, { 45, 20 }, { 57, 20 }, { 68, 20 }, { 80, 19 }, { 92, 20 }, { 103, 20 }, { 116, 20 }, { 127, 20 }, { 138, 20 }, { 150, 20 }, { 167, 20 }, { 188, 20 }, { 199, 21 }, { 211, 20 }, { 13, 29 }, { 28, 29 }, { 39, 29 }, { 51, 29 }, { 63, 30 }, { 74, 29 }, { 86, 29 }, { 98, 29 }, { 110, 29 }, { 121, 30 }, { 133, 29 }, { 144, 29 }, { 156, 30 }, { 171, 29 }, { 188, 29 }, { 200, 29 }, { 212, 29 }, { 14, 39 }, { 30, 39 }, { 42, 39 }, { 55, 39 }, { 66, 38 }, { 77, 39 }, { 89, 39 }, { 101, 39 }, { 113, 39 }, { 124, 38 }, { 136, 39 }, { 147, 39 }, { 166, 39 }, { 17, 47 }, { 36, 47 }, { 48, 47 }, { 60, 47 }, { 72, 48 }, { 83, 48 }, { 95, 47 }, { 106, 48 }, { 119, 48 }, { 130, 47 }, { 141, 48 }, { 164, 48 }, { 200, 48 }, { 13, 56 }, { 28, 56 }, { 42, 57 }, { 92, 56 },
+//    { 141, 56 }, { 156, 57 }, { 170, 56 }, { 189, 57 }, { 199, 57 }, { 212, 56 }
+
+
+
+        //// NEED TO REIMPLEMENT INDICATORS PROPERLY
 
 /* Indicator LEDS are part of the LED driver
  * Top LED is blue only. LED driver 2 RGB 63 Blue channel
  * Middle LED is blue and red. LED driver 2 RGB 63 Red and Green channel
  * Bottom LED is red only LED driver 2 RGB 48 Blue channel.
  */
+
+/*
 uint8_t CAPS = 0;
 uint8_t FN1 = 0;
 uint8_t FN2 = 0;
@@ -183,6 +196,8 @@ bool led_update_kb(led_t led_state) {
     return res;
 }
 
+
+
 __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t state) {
     if (state & (1UL << 1)) {
         FN1 = 255;
@@ -196,3 +211,4 @@ __attribute__((weak)) layer_state_t layer_state_set_user(layer_state_t state) {
     }
   return state;
 }
+*/
