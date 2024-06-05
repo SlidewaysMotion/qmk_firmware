@@ -32,3 +32,12 @@ See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_to
 - Hold Escape
 - Plug In
 - Flash using QMK Toolbox or dfu-util (`make nk87:<keymap>:dfu-util`)
+
+
+This firmware was majorly remade by Slideways to support RGB_Matrix. This code is a work in progress. Features to come:
+
+RGB Matrix fixes, NOT ALL LEDS ARE WORKING, POSITIONS ARE WRONG. PRIORITY #1
+Via Support
+SignalRGB QMK Plugin Support
+Effects for Indicator Lights
+Additional Keymap Controls

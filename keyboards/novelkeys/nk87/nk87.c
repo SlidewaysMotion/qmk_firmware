@@ -153,13 +153,18 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
     {1, SW11_CS16,  SW10_CS16,  SW12_CS16}, //LB64
 };
 
+
+//    \/ For LED Matrix building reference ONLY. This is within the JSON!
+
+
+/*
 led_config_t g_led_config = { {   
     {   0,      1,  2,      3,      4,      5,  6,      7,      8,      9,     10,  11,  12,     13,     14,    15,      16 }, 
-    {  33,     32, 31,     30,     29,     28, 27,     26,     25,     24,     23,  22,  21,     20,     19,    18,      17 }, 
-    {  34,     35, 36,     37,     38,     39, 40,     41,     42,     43,     44,  45,  46, NO_LED,     48,    49,      50 }, 
-    {  63,     62, 61,     60,     59,     58, 57,     56,     55,     54,     53,  52,  47,     51, NO_LED, NO_LED, NO_LED }, 
+    {  17,     18, 19,     20,     21,     22, 23,     24,     25,     26,     27,  28,  29,     30,     31,    32,      33 }, 
+    {  34,     35, 36,     37,     38,     39, 40,     41,     42,     43,     44,  45,  46,     62,     47,    48,      49 }, 
+    {  50,     51, 52,     53,     54,     55, 56,     57,     58,     59,     60,  61,  62,     63, NO_LED, NO_LED, NO_LED }, 
     {  64, NO_LED, 65,     66,     67,     68, 69,     70,     71,     72,     73,  74,  75, NO_LED, NO_LED,     76, NO_LED }, 
-    {  86,     85, 84, NO_LED, NO_LED, NO_LED, 83, NO_LED, NO_LED, NO_LED, NO_LED,  82,  81,     80,     79,     78,     77 }, 
+    {  77,     78, 79, NO_LED, NO_LED, NO_LED, 80, NO_LED, NO_LED, NO_LED, NO_LED,  81,  82,     83,     84,     85,     86 }, 
 }, {
     {  0,0  }, { 16,0  }, { 29,0  }, { 42,0  }, { 55,0  }, { 71,0  }, { 84,0  }, { 97,0  }, {110,0  }, {127,0  }, {140,0  }, {153,0  }, {166,0  }, {182,0  }, {198,0  }, {211,0  }, {224,0  }, 
     {224,15 }, {211,15 }, {198,15 }, {175,15 }, {156,15 }, {143,15 }, {130,15 }, {117,15 }, {104,15 }, { 91,15 }, { 78,15 }, { 65,15 }, { 52,15 }, { 39,15 }, { 26,15 }, { 13,15 }, {  0,15 }, 
@@ -168,23 +173,51 @@ led_config_t g_led_config = { {
     { 68,52 }, { 81,52 }, { 94,52 }, {107,52 }, {120,52 }, {133,52 }, {146,52 }, {170,52 }, {211,52 }, {224,64 }, {211,64 }, {198,64 }, {179,64 }, {162,64 }, {146,64 }, { 91,64 }, { 36,64 }, 
     { 19,64 }, {  3,64 }
 }, {
-    1, 4, 4, 4, 4, 1, 1, 1, 1, 4, 4, 4, 4, 1, 1, 1, 1,
-    1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1,
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
-    1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
-    1, 1, 1, 1, 1, 1, 4, 1, 1, 1
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4
 } };
-
-
-
-//// NEED TO REIMPLEMENT INDICATORS PROPERLY HERE
+*/
 
 /* Indicator LEDS are part of the LED driver
  * Top LED is blue only. LED driver 2 RGB 63 Blue channel
  * Middle LED is blue and red. LED driver 2 RGB 63 Red and Green channel
  * Bottom LED is red only LED driver 2 RGB 48 Blue channel.
  */
+
+//Top LED = Fn, blue(63,B) when FN activated, show 2nd layer programmed keys.
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if (get_highest_layer(layer_state) > 0) {
+        rgb_matrix_set_color(63, RGB_BLUE);
+        uint8_t layer = get_highest_layer(layer_state);
+
+        for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
+            for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
+                uint8_t index = g_led_config.matrix_co[row][col];
+
+                if (index >= led_min && index < led_max && index != NO_LED &&
+                keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
+                    rgb_matrix_set_color(index, RGB_BLUE);
+                }
+            }
+        }
+    }
+// Mid LED indicates Capslock, shift between blue(63,R) and red(63,G) eventually.
+    if (host_keyboard_led_state().caps_lock) {
+        for (uint8_t i = led_min; i < led_max; i++) {
+            if (g_led_config.flags[1] & LED_FLAG_KEYLIGHT) {
+                rgb_matrix_set_color(63, RGB_YELLOW);
+            }
+        }
+    }
+    
+    // Bottom LED indicates Mute, Breathe RED(48,B) when muted.
+    // TBD
+    return false;
+}
 
 #endif
 
