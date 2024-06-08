@@ -157,43 +157,28 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
 
 
 /* Indicator LEDS are part of the LED driver
- * Top LED is blue only. LED driver 2 RGB_Matrix 127 Blue channel
- * Middle LED is blue and red. LED driver 2 RGB_Matrix 127 Red and Green channel
+ * Top LED is blue only. LED driver 2 RGB_Matrix 126 Blue channel
+ * Middle LED is blue and red. LED driver 2 RGB_Matrix 126 Red and Green channel
  * Bottom LED is red only LED driver 2 RGB_Matrix 111 Blue channel.
  */
 
-// Top LED = Fn, blue(63,B) when FN activated, show 2nd layer programmed keys.
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    if (get_highest_layer(layer_state) > 0) {
-        rgb_matrix_set_color(126, RGB_BLUE);
-        uint8_t layer = get_highest_layer(layer_state);
-
-        for (uint8_t row = 0; row < MATRIX_ROWS; ++row) {
-            for (uint8_t col = 0; col < MATRIX_COLS; ++col) {
-                uint8_t index = g_led_config.matrix_co[row][col];
-
-                if (index >= led_min && index < led_max && index != NO_LED &&
-                keymap_key_to_keycode(layer, (keypos_t){col,row}) > KC_TRNS) {
-                    rgb_matrix_set_color(index, RGB_WHITE);
-                }
-            }
-        }
-    }
-
-// Mid LED indicates Capslock, shift between blue(63,R) and red(63,G) eventually.
     if (host_keyboard_led_state().caps_lock) {
-        for (uint8_t i = led_min; i < led_max; i++) {
-            if (g_led_config.flags[1] & LED_FLAG_KEYLIGHT) {
-                rgb_matrix_set_color(126, RGB_YELLOW);
-                rgb_matrix_set_color(111, RGB_BLUE); // Disable this line to use Bottom LED Indicator elsewhere
-
-            }
-        }
+        rgb_matrix_set_color(126, RGB_BLUE);
+    }
+    else if (get_highest_layer(layer_state) > 0) {
+        rgb_matrix_set_color(126, RGB_YELLOW);
     }
     else {
         rgb_matrix_set_color(126, RGB_BLACK);
+    };
+    if (get_highest_layer(layer_state) > 1) {
+        rgb_matrix_set_color(111, RGB_BLUE);
     }
-
+    else {
+        rgb_matrix_set_color(111, RGB_BLACK);
+    }
+    
     return false;
 }
 

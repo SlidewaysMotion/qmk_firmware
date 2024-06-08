@@ -17,7 +17,7 @@
         "mousekey": true,
         "nkro": true,
         "rgb_matrix": true,
-        "signalrgb_support": false  // To be changed
+        "signalrgb_support": false
     },
     "matrix_pins": {
         "cols": ["A13", "A10", "A9", "A14", "A15", "B8", "B9", "B2", "B0", "A6", "A0", "A1", "A2", "A3", "A5", "B1", "B10"],
@@ -26,7 +26,8 @@
     "processor": "STM32F303",
     "rgb_matrix": {
         "driver": "is31fl3733",
-        "max_brightness": 100,
+        "led_flush_limit": 16,
+        "maximum_brightness": 255,
         "led_count": 128,
         "animations": {
             "alphas_mods": true,
@@ -92,7 +93,7 @@
             {"matrix": [ 4, 4 ], "x": 60, "y": 46, "flags": 4}, // C
             {"matrix": [ 1, 4 ], "x": 58, "y": 19, "flags": 4}, // 4
             {"matrix": [ 2, 4 ], "x": 63, "y": 29, "flags": 4}, // R
-            {"matrix": [ 3, 4 ], "x": 65,  "y": 37, "flags": 4}, // F
+            {"matrix": [ 3, 4 ], "x": 65, "y": 37, "flags": 4}, // F
             {"matrix": [ 4, 5 ], "x": 71, "y": 46, "flags": 4}, // V
             {"matrix": [ 1, 5 ], "x": 69, "y": 19, "flags": 4}, // 5
             {"matrix": [ 2, 5 ], "x": 75, "y": 29, "flags": 4}, // T
@@ -125,7 +126,7 @@
             {"matrix": [ 1, 12 ], "x": 151, "y": 19, "flags": 4}, // = 
             {"matrix": [ 2, 12 ], "x": 156, "y": 29, "flags": 4}, // ]  
             {"matrix": [ 4, 12 ], "x": 163, "y": 46, "flags": 4}, // Shift
-            {"matrix": [ 4, 15 ], "x": 168, "y": 46, "flags": 4}, // Up
+            {"matrix": [ 4, 15 ], "x": 200, "y": 46, "flags": 4}, // Up
             {"matrix": [ 1, 13 ], "x": 168, "y": 19, "flags": 4}, // Backspace
             {"matrix": [ 3, 12 ], "x": 170, "y": 29, "flags": 4}, // \
             {"matrix": [ 3, 13 ], "x": 166, "y": 37, "flags": 4}, // Enter
@@ -139,67 +140,67 @@
             {"matrix": [ 5, 12 ], "x": 156, "y": 55, "flags": 4}, // FN
             {"matrix": [ 5, 13 ], "x": 171, "y": 55, "flags": 4}, // RCtrl
             {"matrix": [ 0, 0 ], "x": 11, "y": 8, "flags": 4}, // Esc
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 1 ], "x": 25, "y": 8, "flags": 4}, // F1
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 2 ], "x": 37, "y": 8, "flags": 4}, // F2
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 5, 16 ], "x": 212, "y": 55, "flags": 4}, // Right Arrow
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 5, 16 ], "x": 212, "y": 55, "flags": 4}, // Right
             {"matrix": [ 0, 3 ], "x": 48, "y": 8, "flags": 4}, // F3
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 4 ], "x": 60, "y": 8, "flags": 4},  // F4
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 5 ], "x": 74, "y": 8, "flags": 4}, // F5
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 6 ], "x": 86, "y": 8, "flags": 4}, // F6
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 7 ], "x": 98, "y": 8, "flags": 4}, // F7
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 8 ], "x": 109, "y": 8, "flags": 4}, // F8
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 9 ], "x": 124, "y": 8, "flags": 4}, // F9
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 10 ], "x": 136, "y": 8, "flags": 4}, // F10
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 0, 11 ], "x": 148, "y": 8, "flags": 4}, // F11
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 1}, // Indicator
             {"matrix": [ 0, 12 ], "x": 159, "y": 8, "flags": 4}, // F12
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 2, 14 ], "x": 189, "y": 29, "flags": 4}, // Del
             {"matrix": [ 1, 14 ], "x": 189, "y": 19, "flags": 4}, // Ins
             {"matrix": [ 0, 13 ], "x": 174, "y": 8, "flags": 4}, // F13
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
-            {"matrix": [ 2, 15 ], "x": 200, "y": 8, "flags": 4}, // End 
-            {"matrix": [ 1, 15 ], "x": 212, "y": 8, "flags": 4}, // Home
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
+            {"matrix": [ 2, 15 ], "x": 200, "y": 19, "flags": 4}, // End 
+            {"matrix": [ 1, 15 ], "x": 200, "y": 8, "flags": 4}, // Home
             {"matrix": [ 0, 14 ], "x": 189, "y": 8, "flags": 4}, // PrtScrn?
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 2, 16 ], "x": 212, "y": 29, "flags": 4}, // Page Down
             {"matrix": [ 1, 16 ], "x": 212, "y": 19, "flags": 4}, // Page Up
             {"matrix": [ 0, 15 ], "x": 200, "y": 8, "flags": 4}, // Scroll Lock
-            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 4}, // No LED
+            {"matrix": [ 2, 13 ], "x": 0, "y": 0, "flags": 2}, // No LED
             {"matrix": [ 2, 13  ], "x": 215, "y": 32, "flags": 1}, // Indicator
             {"matrix": [ 0, 16 ], "x": 212, "y": 8, "flags": 4}, // Pause
         ]

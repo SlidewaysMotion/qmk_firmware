@@ -35,6 +35,3 @@ See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_to
 
 
 This firmware was rewritten by Slideways to support RGB_Matrix feature. 
-
-VIA support in progress.
-SignalRGB support in progress.
