@@ -165,16 +165,16 @@ const is31fl3733_led_t PROGMEM g_is31fl3733_leds[IS31FL3733_LED_COUNT] = {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
         rgb_matrix_set_color(126, RGB_BLUE);
-    }
+        }
     else if (get_highest_layer(layer_state) > 0) {
         rgb_matrix_set_color(126, RGB_YELLOW);
-    }
+        }
     else {
         rgb_matrix_set_color(126, RGB_BLACK);
     };
     if (get_highest_layer(layer_state) > 1) {
         rgb_matrix_set_color(111, RGB_BLUE);
-    }
+        }
     else {
         rgb_matrix_set_color(111, RGB_BLACK);
     }
