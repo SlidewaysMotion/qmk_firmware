@@ -8,6 +8,9 @@
 
 This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the Clueboard product line.
 
+This fork is specifically to rewrite Novelkeys NK87 with the v1.4 pcb to support RGB Matrix and Signalrgb. Link to this board:
+https://github.com/SlidewaysMotion/qmk_firmware/tree/NovelKeys-NK87--RGB-Matrix/keyboards/novelkeys/nk87
+
 ## Documentation
 
 * [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
